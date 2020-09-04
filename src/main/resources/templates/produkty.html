@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
 <link rel="stylesheet" type="text/css" href="Style.css">
 <style>
 body  {
@@ -25,10 +26,8 @@ body  {
 			
 	<section>
 		<nav>
-			<ul class="mainNav">
-					<li><a href="/salon">Salon</a></li>
-					<li><a href="/sypialnia">Sypialnia</a></li>
-					<li><a href="/pokojDzieciecy">Pokój Dziecięcy</a></li>
+			<ul class="menuAdmin">
+					
 					<li ><a class="active" href="/produkty">Produkty</a></li>
 					<li ><a href="/uzytkownicy">Uzytkownicy</a></li>
 					<li ><a href="/wyloguj">Wyloguj</a></li>
@@ -40,7 +39,7 @@ body  {
 	
 		<div class="prods">
 
-	<table style="width: 100%">
+	<table style="width: 90%">
 		<tr>
 			<th>Id</th>
 			<th>Zdjecie</th>
@@ -54,27 +53,45 @@ body  {
 	<br>
 		<tr th:each="produkt : ${produkty}">
 			<td><span th:text="${produkt.id}"></span></td>
-				<td><img class="imagel" th:src="${produkt.zdjecie}" alt="debi" style="width:300px;height:200px"></td>
+			<td><img class="imagel" th:src="${produkt.zdjecie}" alt="debi" style="width:300px;height:200px"></td>
 			<td><span th:text="${produkt.kategoria}"></span></td>
 			<td><span th:text="${produkt.nazwa}"></span></td>
 			<td><span th:text="${produkt.opis}"></span></td>
-			<td><span th:text="${produkt.cena} + zl"></span></td>
+			<td><span th:text="${produkt.cena} + zł"></span></td>
+			
 			<th>
 				<form th:action="@{usunProdukt}" method="post">
-					<input type="hidden" name="id" th:value="${produkt.id}" />
-			<button type="submit" class="btn btn-danger btn active" aria-pressed="true"> Usun</button>
+					
+					<input type="hidden" name="id" th:value="${produkt.id}" /> 
+			
+  <td><button type="submit" class="btn btn-danger btn active" aria-pressed="true"> Usuń</button>	</td>
+				
+				<!--  <td><button type="submit2"> Usuń</button>	</td>-->
+							
 						<!-- -<a th:href="usunProdukt" class="btn btn-danger"> <i class="fa fa-arrow-circle-o-right" ></i>&nbsp;Usun</a> -->
-						<a th:href="@{edytujProdukt/__${produkt.id}__}" class="btn btn-warning"> Edytuj</a>
+						
+			 	<td>	<a th:href="@{edytujProdukt/__${produkt.id}__}" class="btn btn-danger btn active" aria-pressed="true"> Edytuj</a> </td>
+					 
+<!-- <td>	 <button th:href="@{edytujProdukt/__${produkt.id}__}" type="submit2"> Edytuj</button>  </td> -->
+ 
+ 
+ <!--	 <a th:href="dodajProdukt" class="btn btn-success btn-lg"> <i class="fa fa-arrow-right" ></i>&nbsp;&nbsp;Dodaj produkt</a>-->
+				
 				</form> 
-			</th>
+		</th>
 		</tr>
 	</table>
 <br>
 	</div>
 	<br>
+	
 		<div class="bato">
- <a th:href="dodajProdukt" class="btn btn-success btn-lg"> <i class="fa fa-arrow-right" ></i>&nbsp;&nbsp;Dodaj produkt</a>
+ <!--  <a th:href="dodajProdukt" class="btn btn-success btn-lg"> <i class="fa fa-arrow-right" ></i>&nbsp;&nbsp;Dodaj produkt</a> -->
 
+ <a th:href="dodajProdukt" class="btn btn-danger btn active" aria-pressed="true">Dodaj produkt</a>
+
+  <!--  <button th:href="dodajProdukt" type="submit"> Dodaj produkt</button> --> 
+	
 	<!--  	<a th:href="@{dodajProdukt}" title="Dodaj produkt">Dodaj produkt</a>	-->
 	</div>
 	
