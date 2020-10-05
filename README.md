@@ -1,4 +1,4 @@
-#Furniture store project
+<h2>Furniture store project</h2> 
 
 Furniture store website.
 Non-commercial project.
